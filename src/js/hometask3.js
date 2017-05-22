@@ -50,13 +50,8 @@ Point.prototype.valueOf = function() {
     return this.firstPoint + this.secondPoint;
 };
 
-var first = parseInt(prompt("Enter x-value of the first point:"));
-var second = parseInt(prompt("Enter y-value of the first point:"));
-var first2 = parseInt(prompt("Enter x-value of the second point:"));
-var second2 = parseInt(prompt("Enter y-value of the second point:"));
-
-var generalPoint = new Point(first, second);
-var secondPoint = new Point(first2, second2);
+var generalPoint = new Point(10, 10);
+var secondPoint = new Point(6, 6);
 
 console.log(generalPoint.add(secondPoint));
 console.log(generalPoint.subtract(secondPoint));
