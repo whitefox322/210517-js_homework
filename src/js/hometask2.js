@@ -44,8 +44,7 @@ ArrayWrapper.prototype.remove = function (index) {
 };
 
 ArrayWrapper.prototype.add = function (item) {
-        this.array.splice(0, 0, item);
-        return this.array;
+        return this.array.push(item);
 };
 
 ArrayWrapper.prototype.contains = function (target) {
@@ -57,9 +56,11 @@ ArrayWrapper.prototype.indexOf = function (item) {
 };
 
 ArrayWrapper.prototype.getAllOccurences = function (item) {
+        var index = this.array.indexOf(item);
         var newArray = [];
-        for(var count = 0; count < this.array.length; count++) {
-            newArray.push(this.array.indexOf(item));
+        while(index !== -1) {
+            newArray.push(index);
+            index = this.array.indexOf(item, index + 1);
         }
         return newArray;
 };
@@ -73,7 +74,7 @@ console.log(arr.getCount());
 console.log(arr.getSourceArray());
 console.log(arr.initializeFrom(arr2));
 console.log(arr.remove(2));
-console.log(arr.add(23));
+console.log(arr.add(1));
 console.log(arr.contains(12));
-console.log(arr.indexOf(23));
-console.log(arr.getAllOccurences(23));
+console.log(arr.indexOf(1));
+console.log(arr.getAllOccurences(1));
