@@ -11,62 +11,74 @@
  - indexOf(item) - повертає індекс переданого елемента
  - getAllOccurences(item) - повертає масив індексів, під якими зустрічається переданий елемент**/
 
-var arr = [];
+function ArrayWrapper(x) {
+    this.array = x;
+}
 
-function ArrayWrapper(itemsAmount, delimeter, sourceArray, index, item, target) {
-    this.generateRandom = function () {
-        for (var count = 0; count < itemsAmount; count++) {
-            arr.push(parseInt(Math.random() * 100 - 1));
+ArrayWrapper.prototype.generateRandom = function (itemsAmount) {
+    for (var count = 0; count < itemsAmount; count++) {
+        this.array.push(parseInt(Math.random() * 100 - 1));
         }
-        return arr;
-    };
-    this.convertToString = function () {
-        return arr.join(delimeter);
-    };
-    this.getCount = function () {
-        return arr.length;
-    };
-    this.getSourceArray = function () {
-        return arr.slice();
-    };
-    this.initializeFrom = function () {
-        return sourceArray;
-    };
-    this.remove = function () {
-        return sourceArray.splice(index, 1);
-    };
-    this.add = function () {
-        sourceArray.splice(sourceArray.length, 0, item);
-        return sourceArray;
-    };
-    this.contains = function () {
-        return sourceArray.indexOf(target) !== -1;
-    };
-    this.indexOf = function () {
-        return sourceArray.indexOf(item);
-    };
-    this.getAllOccurences = function () {
+    return this.array;
+};
+
+ArrayWrapper.prototype.convertToString = function (delimeter) {
+        return this.array.join(delimeter);
+};
+
+ArrayWrapper.prototype.getCount = function () {
+        return this.array.length;
+};
+
+ArrayWrapper.prototype.getSourceArray = function () {
+        return this.array.slice();
+};
+
+ArrayWrapper.prototype.initializeFrom = function (sourceArray) {
+        return sourceArray.array;
+};
+
+ArrayWrapper.prototype.remove = function (index) {
+        return this.array.splice(index, 1);
+};
+
+ArrayWrapper.prototype.add = function (item) {
+        this.array.splice(0, 0, item);
+        return this.array;
+};
+
+ArrayWrapper.prototype.contains = function (target) {
+        return this.array.indexOf(target) !== -1;
+};
+
+ArrayWrapper.prototype.indexOf = function (item) {
+        return this.array.indexOf(item);
+};
+
+ArrayWrapper.prototype.getAllOccurences = function (item) {
         var newArray = [];
-        for(var count = 0; count < itemsAmount; count++) {
-            newArray.push(sourceArray.indexOf(item));
+        for(var count = 0; count < this.array.length; count++) {
+            newArray.push(this.array.indexOf(item));
         }
         return newArray;
-    }
-}
-var random = parseInt(prompt("Enter length of array:"));
-var delim = prompt("Enter delimeter for elements:");
-var id = prompt("Enter index of element to remove:");
-var newItem = prompt("Enter new item of array:");
-var findIt = prompt("Enter element to find:");
+};
 
-var array = new ArrayWrapper(random, delim, arr, id, newItem, findIt);
-console.log(array.generateRandom());
-console.log(array.convertToString());
-console.log(array.getCount());
-console.log(array.getSourceArray());
-console.log(array.initializeFrom());
-console.log(array.remove());
-console.log(array.add());
-console.log(array.contains());
-console.log(array.indexOf());
-console.log(array.getAllOccurences());
+var arr = new ArrayWrapper([]);
+
+arr.generateRandom(parseInt(prompt("Enter length of array:")));
+arr.convertToString(prompt("Enter delimeter for elements:"));
+arr.initializeFrom(new ArrayWrapper([]));
+arr.remove(prompt("Enter index of element to remove:"));
+arr.add(prompt("Enter new item of array:"));
+arr.contains(prompt("Enter element to find:"));
+
+console.log(arr.generateRandom());
+console.log(arr.convertToString());
+console.log(arr.getCount());
+console.log(arr.getSourceArray());
+console.log(arr.initializeFrom());
+console.log(arr.remove());
+console.log(arr.add());
+console.log(arr.contains());
+console.log(arr.indexOf());
+console.log(arr.getAllOccurences());

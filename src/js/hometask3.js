@@ -11,35 +11,53 @@
  - toString() -> Point{x=10, y=10} - переопреділяє метод так, щоб вивід був, як в прикладі
  - valueOf - повертає суму двох точок**/
 
-function Point(x, y, otherPointX, otherPointY) {
-    this.add = function () {
-        return "Point {" + (x + otherPointX) + ", " + (y + otherPointY) + "}";
-};
-    this.subtract = function () {
-        return "Point (" + (x - otherPointX) + ", " + (y - otherPointY) + ")";
-    };
-    this.getX = function () {
-        return x;
-    };
-    this.getY = function () {
-        return y;
-    };
-    this.equals = function () {
-        return (x === otherPointX && y === otherPointY);
-    };
-    this.toString = function () {
-        return "Point {x=" + x + ", y=" + y + "}";
-    };
-    this.valueOf = function () {
-        return (x + otherPointX) + (y + otherPointY);
-    }
+function Point(x, y) {
+    this.firstPoint = x;
+    this.secondPoint = y;
 }
-var firstPoint = parseInt(prompt("Enter x-value of the first point:"));
-var secondPoint = parseInt(prompt("Enter y-value of the first point:"));
-var firstPoint2 = parseInt(prompt("Enter x-value of the second point:"));
-var secondPoint2 = parseInt(prompt("Enter y-value of the second point:"));
 
-var generalPoint = new Point(firstPoint, secondPoint, firstPoint2, secondPoint2);
+Point.prototype.add = function(otherPoint) {
+    var
+        x = this.firstPoint + otherPoint.firstPoint,
+        y = this.secondPoint + otherPoint.secondPoint;
+    return new Point(x, y);
+};
+
+Point.prototype.subtract = function(otherPoint) {
+    var
+        x = this.firstPoint - otherPoint.firstPoint,
+        y = this.secondPoint - otherPoint.secondPoint;
+    return new Point(x, y);
+};
+
+Point.prototype.getX = function() {
+    return this.firstPoint;
+};
+
+Point.prototype.getY = function() {
+    return this.secondPoint;
+};
+
+Point.prototype.equals = function(otherPoint) {
+    return (this.firstPoint === otherPoint.firstPoint && this.secondPoint === otherPoint.secondPoint);
+};
+
+Point.prototype.toString = function() {
+    return "Point {x=" + this.firstPoint + ", y=" + this.secondPoint + "}";
+};
+
+Point.prototype.valueOf = function() {
+    return this.firstPoint + this.secondPoint;
+};
+
+var first = parseInt(prompt("Enter x-value of the first point:"));
+var second = parseInt(prompt("Enter y-value of the first point:"));
+var first2 = parseInt(prompt("Enter x-value of the second point:"));
+var second2 = parseInt(prompt("Enter y-value of the second point:"));
+
+var generalPoint = new Point(first, second);
+var secondPoint = generalPoint.add(new Point(first2, second2));
+
 console.log(generalPoint.add());
 console.log(generalPoint.subtract());
 console.log(generalPoint.getX());
