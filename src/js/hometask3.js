@@ -56,12 +56,12 @@ var first2 = parseInt(prompt("Enter x-value of the second point:"));
 var second2 = parseInt(prompt("Enter y-value of the second point:"));
 
 var generalPoint = new Point(first, second);
-var secondPoint = generalPoint.add(new Point(first2, second2));
+var secondPoint = new Point(first2, second2);
 
-console.log(generalPoint.add());
-console.log(generalPoint.subtract());
+console.log(generalPoint.add(secondPoint));
+console.log(generalPoint.subtract(secondPoint));
 console.log(generalPoint.getX());
 console.log(generalPoint.getY());
-console.log(generalPoint.equals());
+console.log(generalPoint.equals(secondPoint));
 console.log(generalPoint.toString());
 console.log(generalPoint.valueOf());

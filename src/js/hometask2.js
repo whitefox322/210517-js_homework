@@ -31,11 +31,12 @@ ArrayWrapper.prototype.getCount = function () {
 };
 
 ArrayWrapper.prototype.getSourceArray = function () {
-        return this.array.slice();
+        this.copiedArray = this.array.slice();
+        return this.copiedArray;
 };
 
 ArrayWrapper.prototype.initializeFrom = function (sourceArray) {
-        return sourceArray.array;
+        return sourceArray;
 };
 
 ArrayWrapper.prototype.remove = function (index) {
@@ -67,7 +68,6 @@ var arr = new ArrayWrapper([]);
 
 arr.generateRandom(parseInt(prompt("Enter length of array:")));
 arr.convertToString(prompt("Enter delimeter for elements:"));
-arr.initializeFrom(new ArrayWrapper([]));
 arr.remove(prompt("Enter index of element to remove:"));
 arr.add(prompt("Enter new item of array:"));
 arr.contains(prompt("Enter element to find:"));
@@ -76,7 +76,7 @@ console.log(arr.generateRandom());
 console.log(arr.convertToString());
 console.log(arr.getCount());
 console.log(arr.getSourceArray());
-console.log(arr.initializeFrom());
+console.log(arr.initializeFrom(arr.copiedArray));
 console.log(arr.remove());
 console.log(arr.add());
 console.log(arr.contains());
