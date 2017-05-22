@@ -36,7 +36,7 @@ ArrayWrapper.prototype.getSourceArray = function () {
 };
 
 ArrayWrapper.prototype.initializeFrom = function (sourceArray) {
-        return sourceArray;
+        return this.array = sourceArray;
 };
 
 ArrayWrapper.prototype.remove = function (index) {
@@ -65,12 +65,13 @@ ArrayWrapper.prototype.getAllOccurences = function (item) {
 };
 
 var arr = new ArrayWrapper([]);
+var arr2 = [1, 2, 3, 4, 5];
 
 console.log(arr.generateRandom(7));
 console.log(arr.convertToString(" "));
 console.log(arr.getCount());
 console.log(arr.getSourceArray());
-console.log(arr.initializeFrom(arr.copiedArray));
+console.log(arr.initializeFrom(arr2));
 console.log(arr.remove(2));
 console.log(arr.add(23));
 console.log(arr.contains(12));
