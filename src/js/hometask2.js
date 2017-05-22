@@ -66,19 +66,13 @@ ArrayWrapper.prototype.getAllOccurences = function (item) {
 
 var arr = new ArrayWrapper([]);
 
-arr.generateRandom(parseInt(prompt("Enter length of array:")));
-arr.convertToString(prompt("Enter delimeter for elements:"));
-arr.remove(prompt("Enter index of element to remove:"));
-arr.add(prompt("Enter new item of array:"));
-arr.contains(prompt("Enter element to find:"));
-
-console.log(arr.generateRandom());
-console.log(arr.convertToString());
+console.log(arr.generateRandom(7));
+console.log(arr.convertToString(" "));
 console.log(arr.getCount());
 console.log(arr.getSourceArray());
 console.log(arr.initializeFrom(arr.copiedArray));
-console.log(arr.remove());
-console.log(arr.add());
-console.log(arr.contains());
-console.log(arr.indexOf());
-console.log(arr.getAllOccurences());
+console.log(arr.remove(2));
+console.log(arr.add(23));
+console.log(arr.contains(12));
+console.log(arr.indexOf(23));
+console.log(arr.getAllOccurences(23));
